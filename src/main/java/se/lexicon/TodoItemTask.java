@@ -9,12 +9,27 @@ public class TodoItemTask {
 
 
     // Constructors
+    //TODO: Create constructors as needed
+    public TodoItemTask(int id, boolean assigned, TodoItem todoItem, Person person) {
+        if (todoItem == null) {
+            throw new RuntimeException("todoItem is NOT allowed to be NULL!");
+        }
+        this.id = id;
+        this.assigned = assigned;
+        this.todoItem = todoItem;
+        this.assignee = person;
+    }
 
 
     // Methods
 
 
     // Getters & Setters
+
+    public String getSummary(TodoItemTask task) {
+        return "IdTask:" + id + " Assigned: " + assigned + " " + assignee.getSummary(assignee);
+    }
+
 
     public int getId() {
         return id;
@@ -44,4 +59,5 @@ public class TodoItemTask {
     public void setAssignee(Person assignee) {
         this.assignee = assignee;
     }
+
 }

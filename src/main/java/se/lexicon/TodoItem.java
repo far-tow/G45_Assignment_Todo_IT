@@ -2,6 +2,7 @@ package se.lexicon;
 
 import java.time.LocalDate;
 
+
 public class TodoItem {
     // Fields
     private int id;
@@ -12,25 +13,39 @@ public class TodoItem {
     public Person creator;
 
 
-
-
-
-
     // Constructors
-
-
-
+    //TODO: Create constructors as needed
+    public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
+        if(title == null) throw new RuntimeException("title is NOT allowed to be NULL!");
+        this.id = id;
+        this.title = title;
+        this.taskDescription = taskDescription;
+        this.deadLine = deadLine;
+        this.done = done;
+        this.creator = creator;
+    }
 
 
     // Methods
-    // TODO: isOverdue() should return true if current date has passed deadLine. if() ?
-
-
-
+    // Done => TODO: isOverdue() should return true if current date has passed deadLine. if() ?
+    public boolean isOverDue(TodoItem task) {
+        /*LocalDate currentDate = LocalDate.now();
+        int result = deadLine.compareTo(currentDate);
+        if (result < 0) ;
+        {
+            return true;
+        }*/
+        LocalDate dateToDay = LocalDate.now();
+        int result = deadLine.compareTo(dateToDay);
+        return result < 0;
+    }
 
 
     // Getters & Setters
     // Done => TODO: title & deadLine NOT ALLOWED TO BE NULL!!!
+    public String getSummary(TodoItem task) {
+        return "IdToDo:" + getId() + " Title:" + getTitle() + " Task:" + getTaskDescription() + " Deadline:" + getDeadLine() + " Done:" + isDone() + " " + creator.getSummary(creator);
+    }
 
     public int getId() {
         return id;
@@ -41,7 +56,7 @@ public class TodoItem {
     }
 
     public void setTitle(String title) {
-        if (title == null) throw new IllegalArgumentException("title is NOT allowed to be NULL!");
+        if (title == null) throw new IllegalArgumentException("title is NOT allowed to be NULL or EMPTY!");
         this.title = title;
     }
 
@@ -77,6 +92,8 @@ public class TodoItem {
     public void setCreator(Person creator) {
         this.creator = creator;
     }
+
+    //TODO: Create todoItemInformation
 
 
 }

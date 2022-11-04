@@ -8,19 +8,21 @@ public class Person {
     private String eMail;
 
 
-
-
-
     // Constructors
 
+    public String getSummary(Person person) {
+        return "Emp.No:" + getIdNo() + " Name:" + getFirstName() + " " + getLastName() + " Email: " + geteMail();
+    }
 
-
+    public Person(int idNo, String firstName, String lastName, String eMail) {
+        this.idNo = idNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.eMail = eMail;
+    }
 
 
     // Methods
-
-
-
 
 
     // Getters & Setters
@@ -55,5 +57,9 @@ public class Person {
     public void seteMail(String eMail) {
         if (eMail == null) throw new IllegalArgumentException("eMail is NOT allowed to be NULL!");
         this.eMail = eMail;
+    }
+
+    public String personInformation() {
+        return "Id number: " + idNo + "\n" + "First name: " + firstName + " Last name: " + lastName + "\n" + "Email: " + eMail;
     }
 }
