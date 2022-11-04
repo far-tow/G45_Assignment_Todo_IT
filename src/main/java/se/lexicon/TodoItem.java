@@ -15,6 +15,9 @@ public class TodoItem {
 
     // Constructors
     //TODO: Create constructors as needed
+    public TodoItem (){
+
+    }
     public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         if(title == null) throw new RuntimeException("title is NOT allowed to be NULL!");
         this.id = id;
@@ -49,6 +52,10 @@ public class TodoItem {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

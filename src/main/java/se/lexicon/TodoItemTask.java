@@ -10,6 +10,10 @@ public class TodoItemTask {
 
     // Constructors
     //TODO: Create constructors as needed
+    public TodoItemTask (){
+
+    }
+
     public TodoItemTask(int id, boolean assigned, TodoItem todoItem, Person person) {
         if (todoItem == null) {
             throw new RuntimeException("todoItem is NOT allowed to be NULL!");
@@ -33,6 +37,10 @@ public class TodoItemTask {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isAssigned() {

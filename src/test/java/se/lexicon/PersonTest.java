@@ -8,8 +8,9 @@ package se.lexicon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static junit.framework.TestCase.assertEquals;
 
 
 
@@ -23,7 +24,7 @@ public class PersonTest {
     @Before
     public void beforeTest() {
         testPerson = new Person(123, "Karin", "Persson", "karin@lexicon.se");
-        System.out.println(("Before test in PersonTest."));
+        System.out.println("#-#-# Test Starts here! #-#-#");
 
 
     }

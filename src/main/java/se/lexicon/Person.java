@@ -9,6 +9,9 @@ public class Person {
 
 
     // Constructors
+    public Person (){
+
+    }
 
     public String getSummary(Person person) {
         return "Emp.No:" + getIdNo() + " Name:" + getFirstName() + " " + getLastName() + " Email: " + geteMail();
