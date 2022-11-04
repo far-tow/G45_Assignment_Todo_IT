@@ -8,12 +8,10 @@ package se.lexicon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
-//import static org.junit.jupiter.api.Assertions.assertThrows;
-//import static junit.framework.TestCase.assertEquals;
-
-
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static junit.framework.TestCase.assertEquals;
 
 
 public class PersonTest {
@@ -24,27 +22,28 @@ public class PersonTest {
     @Before
     public void beforeTest() {
         testPerson = new Person(123, "Karin", "Persson", "karin@lexicon.se");
-        System.out.println("#-#-# Test Starts here! #-#-#");
 
 
     }
 
     @Test
-    public void testGetters(){
+    public void testGetters() {
         assertEquals(123, testPerson.getIdNo());
-       assertEquals("Karin", testPerson.getFirstName());
+        assertEquals("Karin", testPerson.getFirstName());
         assertEquals("Persson", testPerson.getLastName());
         assertEquals("karin@lexicon.se", testPerson.geteMail());
     }
+
     @Test
-    public void testSetters(){
+    public void testSetters() {
         testPerson2.setFirstName("Hans");
         testPerson2.setLastName("Andersson");
         testPerson2.seteMail("hans@lexicon.se");
         System.out.println(testPerson2.toString());
     }
+
     @Test
-    public void testNullExeptions(){
+    public void testNullExeptions() {
         assertThrows(IllegalArgumentException.class, () -> testPerson4.setFirstName(null));
         assertThrows(IllegalArgumentException.class, () -> testPerson4.setLastName(null));
         assertThrows(IllegalArgumentException.class, () -> testPerson4.seteMail(null));
@@ -52,7 +51,7 @@ public class PersonTest {
 
 
     @Test
-    public void getSummaryTest(){
+    public void getSummaryTest() {
         assertEquals("Emp.No:123 Name:Karin Persson Email: karin@lexicon.se", testPerson.getSummary(testPerson));
     }
 

@@ -65,4 +65,5 @@ public class Person {
     public String personInformation() {
         return "Id number: " + idNo + "\n" + "First name: " + firstName + " Last name: " + lastName + "\n" + "Email: " + eMail;
     }
+
 }

@@ -26,7 +26,7 @@ public class TodoItemTaskTest {
 
     @Before
     public void beforeTest() {
-        System.out.println("#-#-# Test Starts here! #-#-#");
+        //System.out.println("#-#-# Test Starts here! #-#-#");
     }
 
     @Test

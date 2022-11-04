@@ -29,6 +29,7 @@ public class App {
 
         TodoItemTask task1 = new TodoItemTask(20, true, item1, per1);
         TodoItemTask task2 = new TodoItemTask(21, true, item2, per2);
+
         System.out.println(task1.getSummary(task1));
         System.out.println(task2.getSummary(task2));
         System.out.println("___________________________________");
