@@ -5,9 +5,9 @@
 
 package se.lexicon;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -20,8 +20,7 @@ public class TodoItemTest {
     private Person person = new Person(123, "Hans", "Andersson", "hans@lexicon.se");
 
 
-    @Before
-
+    @BeforeEach
     public void beforeTest() {
         testItem = new TodoItem(123,"Clean workshop","Workshop", LocalDate.parse("2022-11-30"),false, person);
         testItem2 = new TodoItem(125,"Oil in tools","Toolsection", LocalDate.parse("2022-10-15"),true, person);

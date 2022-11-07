@@ -6,10 +6,9 @@
 package se.lexicon;
 
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import se.lexicon.Person;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
@@ -24,16 +23,16 @@ public class TodoItemTaskTest {
     private TodoItemTask testTask2 = new TodoItemTask(113, true, testItem, testPerson);
     private TodoItemTask testTask3 = new TodoItemTask();
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         //System.out.println("#-#-# Test Starts here! #-#-#");
     }
 
     @Test
     public void testGetters() {
-        Assert.assertEquals(111, testTask.getId());
-        Assert.assertFalse(testTask.isAssigned());
-        Assert.assertTrue(testTask2.isAssigned());
+        assertEquals(111, testTask.getId());
+        assertFalse(testTask.isAssigned());
+        assertTrue(testTask2.isAssigned());
     }
 
     @Test

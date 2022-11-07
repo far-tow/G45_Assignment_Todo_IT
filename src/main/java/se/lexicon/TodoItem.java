@@ -19,7 +19,7 @@ public class TodoItem {
 
     }
     public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
-        if(title == null) throw new RuntimeException("title is NOT allowed to be NULL!");
+        if(title == null || title.isEmpty()) throw new RuntimeException("title is NOT allowed to be NULL!");
         this.id = id;
         this.title = title;
         this.taskDescription = taskDescription;

@@ -5,13 +5,11 @@
 
 package se.lexicon;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static junit.framework.TestCase.assertEquals;
 
 
 public class PersonTest {
@@ -19,7 +17,7 @@ public class PersonTest {
     private Person testPerson2 = new Person();
     private Person testPerson4 = new Person();
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         testPerson = new Person(123, "Karin", "Persson", "karin@lexicon.se");
 

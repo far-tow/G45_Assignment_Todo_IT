@@ -14,14 +14,14 @@ public class TodoItemTask {
 
     }
 
-    public TodoItemTask(int id, boolean assigned, TodoItem todoItem, Person person) {
+    public TodoItemTask(int id, TodoItem todoItem, Person person) {
         if (todoItem == null) {
             throw new RuntimeException("todoItem is NOT allowed to be NULL!");
         }
         this.id = id;
-        this.assigned = assigned;
+
         this.todoItem = todoItem;
-        this.assignee = person;
+        setAssignee(person);
     }
 
 
@@ -66,6 +66,7 @@ public class TodoItemTask {
 
     public void setAssignee(Person assignee) {
         this.assignee = assignee;
+        this.assigned = true;
     }
 
 }
