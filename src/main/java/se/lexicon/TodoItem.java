@@ -1,6 +1,7 @@
 package se.lexicon;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 public class TodoItem {
@@ -15,11 +16,12 @@ public class TodoItem {
 
     // Constructors
     //TODO: Create constructors as needed
-    public TodoItem (){
+    public TodoItem() {
 
     }
+
     public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
-        if(title == null || title.isEmpty()) throw new RuntimeException("title is NOT allowed to be NULL!");
+        if (title == null || title.isEmpty()) throw new RuntimeException("title is NOT allowed to be NULL!");
         this.id = id;
         this.title = title;
         this.taskDescription = taskDescription;
@@ -41,13 +43,25 @@ public class TodoItem {
         LocalDate dateToDay = LocalDate.now();
         int result = deadLine.compareTo(dateToDay);
         return result < 0;
+
     }
 
 
+
     // Getters & Setters
-    // Done => TODO: title & deadLine NOT ALLOWED TO BE NULL!!!
-    public String getSummary(TodoItem task) {
+    /*public String getSummary(TodoItem task) {
         return "IdToDo:" + getId() + " Title:" + getTitle() + " Task:" + getTaskDescription() + " Deadline:" + getDeadLine() + " Done:" + isDone() + " " + creator.getSummary(creator);
+    }*/
+
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadLine=" + deadLine +
+                ", done=" + done +
+                '}';
     }
 
     public int getId() {
@@ -100,6 +114,18 @@ public class TodoItem {
         this.creator = creator;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TodoItem)) return false;
+        TodoItem todoItem = (TodoItem) o;
+        return getId() == todoItem.getId() && isDone() == todoItem.isDone() && getTitle().equals(todoItem.getTitle()) && getTaskDescription().equals(todoItem.getTaskDescription()) && getDeadLine().equals(todoItem.getDeadLine());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getTaskDescription(), getDeadLine(), isDone());
+    }
     //TODO: Create todoItemInformation
 
 

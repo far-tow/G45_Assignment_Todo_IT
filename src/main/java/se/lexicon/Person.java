@@ -1,21 +1,24 @@
 package se.lexicon;
 
+import java.util.Objects;
+
 public class Person {
     // Fields
     private int idNo;
     private String firstName;
     private String lastName;
     private String eMail;
+    private AppUser credentials;
 
 
     // Constructors
-    public Person (){
+    public Person() {
 
     }
 
-    public String getSummary(Person person) {
+   /* public String getSummary(Person person) {
         return "Emp.No:" + getIdNo() + " Name:" + getFirstName() + " " + getLastName() + " Email: " + geteMail();
-    }
+    }*/
 
     public Person(int idNo, String firstName, String lastName, String eMail) {
         this.idNo = idNo;
@@ -29,7 +32,6 @@ public class Person {
 
 
     // Getters & Setters
-    // Done => TODO: firstName & lastName & eMail NOT ALLOWED TO BE NULL!!!
     public int getIdNo() {
         return idNo;
     }
@@ -64,6 +66,32 @@ public class Person {
 
     public String personInformation() {
         return "Id number: " + idNo + "\n" + "First name: " + firstName + " Last name: " + lastName + "\n" + "Email: " + eMail;
+    }
+
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
+    }
+    @Override
+    public String toString() {
+        return "Person{" + "Emp.No: =" + getIdNo() + ", firstName='" + getFirstName() + '\'' + ", lastName='" + getLastName() + '\'' + ", eMail='" + geteMail() + '\'' + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNo, firstName, lastName, eMail);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return idNo == person.idNo && firstName.equals(person.firstName) && lastName.equals(person.lastName) && eMail.equals(person.eMail);
     }
 
 }

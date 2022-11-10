@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import java.util.Objects;
+
 public class TodoItemTask {
     // Fields
     private int id;
@@ -10,7 +12,7 @@ public class TodoItemTask {
 
     // Constructors
     //TODO: Create constructors as needed
-    public TodoItemTask (){
+    public TodoItemTask() {
 
     }
 
@@ -30,9 +32,11 @@ public class TodoItemTask {
 
     // Getters & Setters
 
-    public String getSummary(TodoItemTask task) {
+    /*public String getSummary(TodoItemTask task) {
         return "IdTask:" + id + " Assigned: " + assigned + " " + assignee.getSummary(assignee);
-    }
+    }*/
+
+
 
 
     public int getId() {
@@ -69,4 +73,24 @@ public class TodoItemTask {
         this.assigned = true;
     }
 
+    public String toString() {
+        return "ToDoItemTask{" +
+                "id=" + id +
+                ", assigned=" + assigned +
+                ", toDoItem=" + todoItem +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TodoItemTask)) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return getId() == that.getId() && isAssigned() == that.isAssigned() && getTodoItem().equals(that.getTodoItem());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), isAssigned(), getTodoItem());
+    }
 }

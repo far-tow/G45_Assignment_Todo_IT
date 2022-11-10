@@ -6,7 +6,6 @@
 package se.lexicon;
 
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +18,8 @@ public class TodoItemTaskTest {
     Person testPerson = new Person(67, "Kristina", "Hansson", "kristina@lexicon.se");
     TodoItem testItem = new TodoItem(23, "Saw veneer", "Make veneers to size", LocalDate.parse("2022-11-30"),
             false, testPerson);
-    private TodoItemTask testTask = new TodoItemTask(111, false, testItem, testPerson);
-    private TodoItemTask testTask2 = new TodoItemTask(113, true, testItem, testPerson);
+    private TodoItemTask testTask = new TodoItemTask(111,  testItem, testPerson);
+    private TodoItemTask testTask2 = new TodoItemTask(113,  testItem, testPerson);
     private TodoItemTask testTask3 = new TodoItemTask();
 
     @BeforeEach
@@ -31,7 +30,7 @@ public class TodoItemTaskTest {
     @Test
     public void testGetters() {
         assertEquals(111, testTask.getId());
-        assertFalse(testTask.isAssigned());
+        assertTrue(testTask.isAssigned());
         assertTrue(testTask2.isAssigned());
     }
 
@@ -51,7 +50,7 @@ public class TodoItemTaskTest {
 
     @Test
     public void getSummaryTest() {
-        assertEquals("IdTask:111 Assigned: false Emp.No:67 Name:Kristina Hansson Email: kristina@lexicon.se", testTask.getSummary(testTask));
+        assertEquals("IdTask:111 Assigned: true Emp.No:67 Name:Kristina Hansson Email: kristina@lexicon.se", testTask.getSummary(testTask));
     }
 
 }
