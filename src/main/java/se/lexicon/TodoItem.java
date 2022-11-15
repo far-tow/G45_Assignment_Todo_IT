@@ -53,16 +53,6 @@ public class TodoItem {
         return "IdToDo:" + getId() + " Title:" + getTitle() + " Task:" + getTaskDescription() + " Deadline:" + getDeadLine() + " Done:" + isDone() + " " + creator.getSummary(creator);
     }*/
 
-    @Override
-    public String toString() {
-        return "TodoItem{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", taskDescription='" + taskDescription + '\'' +
-                ", deadLine=" + deadLine +
-                ", done=" + done +
-                '}';
-    }
 
     public int getId() {
         return id;
@@ -126,7 +116,17 @@ public class TodoItem {
     public int hashCode() {
         return Objects.hash(getId(), getTitle(), getTaskDescription(), getDeadLine(), isDone());
     }
-    //TODO: Create todoItemInformation
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadLine=" + deadLine +
+                ", done=" + done +
+                '}';
+    }
+
 
 
 }

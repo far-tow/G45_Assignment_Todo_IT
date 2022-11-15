@@ -9,8 +9,8 @@ public class App {
         Person per1 = new Person(1, "Karin", "Persson", "karin@lexicon.se");
         Person per2 = new Person(2, "Erik", "Svensson", "erik@lexicon.se");
 
-        System.out.println(per1.getSummary(per1));
-        System.out.println(per2.getSummary(per2));
+        System.out.println(per1.toString());
+        System.out.println(per2.toString());
         System.out.println("___________________________________");
 
         //Create Tasks and assigns it to assignees
@@ -19,9 +19,9 @@ public class App {
         TodoItem item3 = new TodoItem(12,"blabla","göra nåt",LocalDate.parse("2022-11-24"),false,per1);
 
 
-        System.out.println(item1.getSummary(item1));
-        System.out.println(item2.getSummary(item1));
-        System.out.println(item3.getSummary(item3));
+        System.out.println(item1.toString());
+        System.out.println(item2.toString());
+        System.out.println(item3.toString());
         System.out.println("___________________________________");
 
         //Check when task should be done and if the date has passed or not.
@@ -34,8 +34,15 @@ public class App {
         TodoItemTask task1 = new TodoItemTask(20,  item1, per1);
         TodoItemTask task2 = new TodoItemTask(21,  item2, per2);
 
-        System.out.println(task1.getSummary(task1));
-        System.out.println(task2.getSummary(task2));
+        System.out.println(task1.toString());
+        System.out.println(task2.toString());
         System.out.println("___________________________________");
+
+        System.out.println("item1 hashcode = " + item1.hashCode());
+        System.out.println("item2 hashcode = " + item2.hashCode());
+        System.out.println("Checking equality between item1 and item2 = " + item1.equals(item2));
+        System.out.println("___________________________________");
+
+
     }
 }

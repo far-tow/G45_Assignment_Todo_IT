@@ -17,6 +17,11 @@ public class AppUser {
 
     //Constructors
 
+    public AppUser(String userName, String passWord, AppRole role) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.role = role;
+    }
 
 
     //Methods
