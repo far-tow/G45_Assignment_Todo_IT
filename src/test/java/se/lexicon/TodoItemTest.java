@@ -17,19 +17,19 @@ public class TodoItemTest {
     private TodoItem testItem;
     private TodoItem testItem2;
     private TodoItem testItem3 = new TodoItem();
-    private Person person = new Person(123, "Hans", "Andersson", "hans@lexicon.se");
+    private Person person = new Person("Hans", "Andersson", "hans@lexicon.se");
 
 
     @BeforeEach
     public void beforeTest() {
-        testItem = new TodoItem(123,"Clean workshop","Workshop", LocalDate.parse("2022-11-30"),false, person);
-        testItem2 = new TodoItem(125,"Oil in tools","Toolsection", LocalDate.parse("2022-10-15"),true, person);
+        testItem = new TodoItem("Clean workshop","Workshop", LocalDate.parse("2022-11-30"),false, person);
+        testItem2 = new TodoItem("Oil in tools","Toolsection", LocalDate.parse("2022-10-15"),true, person);
         System.out.println("#-#-# Test Starts here! #-#-#");
     }
 
     @Test
     public void testGetters(){
-        assertEquals(123, testItem.getId());
+        //assertEquals(123, testItem.getId());
         assertEquals("Clean workshop", testItem.getTitle());
         assertEquals("Workshop", testItem.getTaskDescription());
         assertEquals(LocalDate.parse("2022-11-30"), testItem.getDeadLine());

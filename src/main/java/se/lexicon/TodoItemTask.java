@@ -1,5 +1,8 @@
 package se.lexicon;
 
+import se.lexicon.sequencer.TodoItemIdSequencer;
+import se.lexicon.sequencer.TodoItemTaskIdSequencer;
+
 import java.util.Objects;
 
 public class TodoItemTask {
@@ -15,11 +18,11 @@ public class TodoItemTask {
 
     }
 
-    public TodoItemTask(int id, TodoItem todoItem, Person person) {
+    public TodoItemTask(TodoItem todoItem, Person person) {
         if (todoItem == null) {
             throw new RuntimeException("todoItem is NOT allowed to be NULL!");
         }
-        this.id = id;
+        this.id = TodoItemIdSequencer.nextId();
         this.todoItem = todoItem;
         setAssignee(person);
     }
@@ -36,6 +39,7 @@ public class TodoItemTask {
 
 
     public int getId() {
+        TodoItemIdSequencer.nextId();
         return id;
     }
 
@@ -71,10 +75,10 @@ public class TodoItemTask {
 
     @Override
     public String toString() {
-        return "ToDoItemTask{" +
+        return "TodoItemTask{" +
                 "id=" + id +
                 ", assigned=" + assigned +
-                ", toDoItem=" + todoItem +
+                ", todoItem=" + todoItem +
                 '}';
     }
 

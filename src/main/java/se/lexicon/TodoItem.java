@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import se.lexicon.sequencer.TodoItemIdSequencer;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -15,14 +17,14 @@ public class TodoItem {
 
 
     // Constructors
-    //TODO: Create constructors as needed
+
     public TodoItem() {
 
     }
 
-    public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
+    public TodoItem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         if (title == null || title.isEmpty()) throw new RuntimeException("title is NOT allowed to be NULL!");
-        this.id = id;
+        this.id = TodoItemIdSequencer.nextId();
         this.title = title;
         this.taskDescription = taskDescription;
         this.deadLine = deadLine;
@@ -32,7 +34,6 @@ public class TodoItem {
 
 
     // Methods
-    // Done => TODO: isOverdue() should return true if current date has passed deadLine. if() ?
     public boolean isOverDue(TodoItem task) {
         /*LocalDate currentDate = LocalDate.now();
         int result = deadLine.compareTo(currentDate);
@@ -55,6 +56,7 @@ public class TodoItem {
 
 
     public int getId() {
+        TodoItemIdSequencer.nextId();
         return id;
     }
 

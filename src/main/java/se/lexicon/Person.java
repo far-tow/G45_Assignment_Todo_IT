@@ -1,10 +1,12 @@
 package se.lexicon;
 
+import se.lexicon.sequencer.PersonalSequencer;
+
 import java.util.Objects;
 
 public class Person {
     // Fields
-    private int idNo;
+    private int id;
     private String firstName;
     private String lastName;
     private String eMail;
@@ -20,8 +22,8 @@ public class Person {
         return "Emp.No:" + getIdNo() + " Name:" + getFirstName() + " " + getLastName() + " Email: " + geteMail();
     }*/
 
-    public Person(int idNo, String firstName, String lastName, String eMail) {
-        this.idNo = idNo;
+    public Person(String firstName, String lastName, String eMail) {
+        this.id = PersonalSequencer.nextId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
@@ -32,8 +34,9 @@ public class Person {
 
 
     // Getters & Setters
-    public int getIdNo() {
-        return idNo;
+    public int getId() {
+        PersonalSequencer.nextId();
+        return id;
     }
 
 
@@ -65,7 +68,7 @@ public class Person {
     }
 
     public String personInformation() {
-        return "Id number: " + idNo + "\n" + "First name: " + firstName + " Last name: " + lastName + "\n" + "Email: " + eMail;
+        return "Id number: " + id + "\n" + "First name: " + firstName + " Last name: " + lastName + "\n" + "Email: " + eMail;
     }
 
     public AppUser getCredentials() {
@@ -77,12 +80,12 @@ public class Person {
     }
     @Override
     public String toString() {
-        return "Person{" + "Emp.No: =" + getIdNo() + ", firstName='" + getFirstName() + '\'' + ", lastName='" + getLastName() + '\'' + ", eMail='" + geteMail() + '\'' + '}';
+        return "Person{" + "Emp.No: =" + getId() + ", firstName='" + getFirstName() + '\'' + ", lastName='" + getLastName() + '\'' + ", eMail='" + geteMail() + '\'' + '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idNo, firstName, lastName, eMail);
+        return Objects.hash(id, firstName, lastName, eMail);
     }
 
 
@@ -91,7 +94,8 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return idNo == person.idNo && firstName.equals(person.firstName) && lastName.equals(person.lastName) && eMail.equals(person.eMail);
+        return id == person.id && firstName.equals(person.firstName) && lastName.equals(person.lastName) && eMail.equals(person.eMail);
     }
+
 
 }

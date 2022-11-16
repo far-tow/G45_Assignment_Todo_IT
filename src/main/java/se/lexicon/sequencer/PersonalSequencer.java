@@ -7,18 +7,15 @@ package se.lexicon.sequencer;
 
 public class PersonalSequencer {
     //fields
-    private static int currentId;
+    private static int currentId = 100;
 
     //constructors
 
 
-
     //methods
-    public static int nextId(){
+    public static int nextId() {
         return ++currentId;
     }
-
-
 
 
     //getters & setters

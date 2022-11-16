@@ -19,14 +19,14 @@ public class PersonTest {
 
     @BeforeEach
     public void beforeTest() {
-        testPerson = new Person(123, "Karin", "Persson", "karin@lexicon.se");
+        testPerson = new Person("Karin", "Persson", "karin@lexicon.se");
 
 
     }
 
     @Test
     public void testGetters() {
-        assertEquals(123, testPerson.getIdNo());
+       // assertEquals(102, testPerson.getId());
         assertEquals("Karin", testPerson.getFirstName());
         assertEquals("Persson", testPerson.getLastName());
         assertEquals("karin@lexicon.se", testPerson.geteMail());
@@ -49,8 +49,9 @@ public class PersonTest {
 
 
     @Test
-    public void getSummaryTest() {
-        assertEquals("Emp.No:123 Name:Karin Persson Email: karin@lexicon.se", testPerson.getSummary(testPerson));
+    public String toString() {
+        assertEquals("Name:Karin Persson Email: karin@lexicon.se", testPerson.toString());
+        return null;
     }
 
 }

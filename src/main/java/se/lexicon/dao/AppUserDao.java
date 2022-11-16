@@ -5,20 +5,18 @@
 
 package se.lexicon.dao;
 
-import se.lexicon.Person;
+import se.lexicon.AppUser;
 
 import java.util.Collection;
 
-public interface PersonDAO {
-    Person persist(Person person);
+public interface AppUserDao {
+    AppUser persist(AppUser appUser);
 
-    Person findById(int id);
+    AppUser findByUsername(String userName);
 
-    Person findByEmail(String email);
+    Collection<AppUser> findAll();
 
-    Collection<Person> findAll();
-
-    void remove(int id);
+    boolean remove(String userName);
 
 
 }

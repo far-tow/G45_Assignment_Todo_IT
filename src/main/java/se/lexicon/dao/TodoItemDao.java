@@ -10,7 +10,7 @@ import se.lexicon.TodoItem;
 import java.time.LocalDate;
 import java.util.Collection;
 
-public interface TodoItemDAO {
+public interface TodoItemDao {
     TodoItem persist(TodoItem todoItem);
 
     TodoItem findById(int id);

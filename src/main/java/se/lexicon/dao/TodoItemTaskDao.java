@@ -9,7 +9,7 @@ import se.lexicon.TodoItemTask;
 
 import java.util.Collection;
 
-public interface TodoItemTaskDAO {
+public interface TodoItemTaskDao {
     TodoItemTask persist (TodoItemTask todoItemTask);
     TodoItemTask findById (int id);
     Collection<TodoItemTask> findAll ();

@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TodoItemTaskTest {
 
-    Person testPerson = new Person(67, "Kristina", "Hansson", "kristina@lexicon.se");
-    TodoItem testItem = new TodoItem(23, "Saw veneer", "Make veneers to size", LocalDate.parse("2022-11-30"),
+    Person testPerson = new Person("Kristina", "Hansson", "kristina@lexicon.se");
+    TodoItem testItem = new TodoItem("Saw veneer", "Make veneers to size", LocalDate.parse("2022-11-30"),
             false, testPerson);
-    private TodoItemTask testTask = new TodoItemTask(111,  testItem, testPerson);
-    private TodoItemTask testTask2 = new TodoItemTask(113,  testItem, testPerson);
+    private TodoItemTask testTask = new TodoItemTask(testItem, testPerson);
+    private TodoItemTask testTask2 = new TodoItemTask(testItem, testPerson);
     private TodoItemTask testTask3 = new TodoItemTask();
 
     @BeforeEach
@@ -29,14 +29,14 @@ public class TodoItemTaskTest {
 
     @Test
     public void testGetters() {
-        assertEquals(111, testTask.getId());
+        //assertEquals(111, testTask.getId());
         assertTrue(testTask.isAssigned());
         assertTrue(testTask2.isAssigned());
     }
 
     @Test
     public void testSetters() {
-        testTask3.setId(89);
+       // testTask3.setId(89);
         testTask3.setAssigned(true);
         testTask3.setTodoItem(testItem);
         testTask3.setAssignee(testPerson);
@@ -49,8 +49,9 @@ public class TodoItemTaskTest {
     }
 
     @Test
-    public void getSummaryTest() {
-        assertEquals("IdTask:111 Assigned: true Emp.No:67 Name:Kristina Hansson Email: kristina@lexicon.se", testTask.getSummary(testTask));
+    public String toString() {
+        assertEquals("Assigned: true Emp.No:67 Name:Kristina Hansson Email: kristina@lexicon.se", testTask.toString());
+        return null;
     }
 
 }

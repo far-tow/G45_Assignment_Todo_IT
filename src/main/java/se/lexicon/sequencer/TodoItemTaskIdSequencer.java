@@ -7,7 +7,7 @@ package se.lexicon.sequencer;
 
 public class TodoItemTaskIdSequencer {
     //fields
-    private static int currentId;
+    private static int currentId = 300;
 
 
     //constructors

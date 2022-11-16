@@ -23,6 +23,10 @@ public class AppUser {
         this.role = role;
     }
 
+    public AppUser() {
+
+    }
+
 
     //Methods
 
