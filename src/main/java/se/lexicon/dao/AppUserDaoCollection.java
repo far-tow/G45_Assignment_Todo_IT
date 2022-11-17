@@ -9,18 +9,24 @@ package se.lexicon.dao;
 import se.lexicon.AppUser;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 public class AppUserDaoCollection implements AppUserDao {
 
-    private Collection<AppUser> appUsers;
-    AppUser appUser = new AppUser();
+    //private List<AppUser> appUsers;
+    private List<AppUser> appUsers;
+    public AppUserDaoCollection() {
+        this.appUsers = new ArrayList<>();
+    }
 
     @Override
     public AppUser persist(AppUser appUser) {
         if (appUser == null) throw new IllegalArgumentException("appUser was null");
-        if (appUser.getUserName() != null) throw new IllegalArgumentException("userName was duplicate");
+        AppUser result = findByUsername(appUser.getUserName());
+        if (result != null) throw new IllegalArgumentException("userName was duplicate");
         appUsers.add(appUser);
         return appUser;
     }
@@ -29,14 +35,17 @@ public class AppUserDaoCollection implements AppUserDao {
     public AppUser findByUsername(String userName) {
         if (userName == null) throw new IllegalArgumentException("username was null");
         for (AppUser temp : appUsers ) {
-            if(temp.getUserName().equalsIgnoreCase(userName)) appUser=temp;
+            if (!(temp.getUserName().equals(null)) && temp.getUserName().equalsIgnoreCase(userName))
+
+                return temp;
+            //appUsers.add(temp);
         }
-        return appUser;
+        return null;
     }
 
     @Override
     public Collection<AppUser> findAll() {
-        return appUsers;
+        return new ArrayList<>(appUsers);
     }
 
     @Override

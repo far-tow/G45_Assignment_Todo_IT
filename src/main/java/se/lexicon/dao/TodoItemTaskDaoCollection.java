@@ -11,11 +11,13 @@ import se.lexicon.TodoItemTask;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
-    Collection<TodoItemTask> tasks;
-    TodoItemTask task = new TodoItemTask();
+    Collection<TodoItemTask> tasks = new ArrayList<>();
 
+    public TodoItemTaskDaoCollection() {
+    }
 
     @Override
     public TodoItemTask persist(TodoItemTask task) {
@@ -29,25 +31,25 @@ public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
     @Override
     public TodoItemTask findById(int id) {
         if (id == 0) throw new IllegalArgumentException("id was null");
-        for (TodoItemTask temp : tasks) {
-            if (temp.getId() == id)
-                task = temp;
+        for (TodoItemTask currentElement : tasks) {
+            if (currentElement.getId() != 0 && currentElement.getId() == id)
+              return currentElement;
         }
-        return task;
+        return null;
     }
+
 
     @Override
     public Collection<TodoItemTask> findAll() {
-        return tasks;
+        return new ArrayList<>(tasks);
     }
-
 
     @Override
     public Collection<TodoItemTask> findByAssignedStatus(boolean status) {
         Collection<TodoItemTask> it = new ArrayList<>();
-        for (TodoItemTask temp : tasks) {
-            if (temp.isAssigned() == status)
-                it.add(temp);
+        for (TodoItemTask currentElement : tasks) {
+            if (currentElement.isAssigned() == status)
+                it.add(currentElement);
         }
         return it;
     }
@@ -55,9 +57,9 @@ public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
     @Override
     public Collection<TodoItemTask> findByPersonId(int id) {
         Collection<TodoItemTask> it = new ArrayList<>();
-        for (TodoItemTask temp : tasks) {
-            if (temp.getAssignee().getId() == id)
-                it.add(temp);
+        for (TodoItemTask currentElement : tasks) {
+            if (currentElement.getAssignee().getId() == id)
+                it.add(currentElement);
         }
         return it;
     }
@@ -65,12 +67,6 @@ public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
 
     @Override
     public void remove(int id) {
-        Iterator<TodoItemTask> itr = tasks.iterator();
-        while (itr.hasNext()) {
-            TodoItemTask t = itr.next();
-            if (id == t.getId()) {
-                break;
-            }
-        }
+        tasks.removeIf(currentElement -> currentElement.getId() == id);
     }
 }

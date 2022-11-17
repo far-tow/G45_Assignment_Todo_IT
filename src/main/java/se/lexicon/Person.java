@@ -22,11 +22,12 @@ public class Person {
         return "Emp.No:" + getIdNo() + " Name:" + getFirstName() + " " + getLastName() + " Email: " + geteMail();
     }*/
 
-    public Person(String firstName, String lastName, String eMail) {
+    public Person(String firstName, String lastName, String eMail, AppUser credentials) {
         this.id = PersonalSequencer.nextId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
+        this.credentials = credentials;
     }
 
 

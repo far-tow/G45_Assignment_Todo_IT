@@ -12,10 +12,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class TodoItemDaoCollection implements TodoItemDao {
 
-    private Collection<TodoItem> items;
+    private List<TodoItem> items = new ArrayList<>();
     TodoItem item = new TodoItem();
 
 
@@ -31,11 +32,11 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public TodoItem findById(int id) {
         if (id == 0) throw new IllegalArgumentException("id was null");
-        for (TodoItem temp : items) {
-            if (temp.getId() == id)
-                item = temp;
+        for (TodoItem currentElement : items) {
+            if (currentElement.getId() != 0 && currentElement.getId() == id)
+                 return currentElement;
         }
-        return item;
+        return null;
     }
 
     @Override
@@ -47,9 +48,9 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public Collection<TodoItem> findAllByDoneStatus(boolean done) {
         Collection<TodoItem> it = new ArrayList<>();
-        for (TodoItem temp : items) {
-            if (temp.isDone() == done)
-                it.add(temp);
+        for (TodoItem currentElement : items) {
+            if (currentElement.isDone() == done)
+                it.add(currentElement);
         }
         return it;
     }
@@ -58,9 +59,9 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public Collection<TodoItem> findByTitleContains(String title) {
         Collection<TodoItem> it = new ArrayList<>();
-        for (TodoItem temp : items) {
-            if (temp.getTitle().contains(title.toLowerCase()))
-                it.add(temp);
+        for (TodoItem currentElement : items) {
+            if (currentElement.getTitle().contains(title.toLowerCase()))
+                it.add(currentElement);
         }
         return it;
     }
@@ -68,9 +69,9 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public Collection<TodoItem> findByPersonId(int personId) {
         Collection<TodoItem> it = new ArrayList<>();
-        for (TodoItem temp : items) {
-            if (temp.getCreator().getId() == personId)
-                it.add(temp);
+        for (TodoItem currentElement : items) {
+            if (currentElement.getCreator().getId() == personId)
+                it.add(currentElement);
         }
         return it;
     }
@@ -79,9 +80,9 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public Collection<TodoItem> findByDeadlineBefore(LocalDate date) {
         Collection<TodoItem> it = new ArrayList<>();
-        for (TodoItem temp : items) {
-            if (temp.getDeadLine().compareTo(date) < 0)
-                it.add(temp);
+        for (TodoItem currentElement : items) {
+            if (currentElement.getDeadLine().compareTo(date) < 0)
+                it.add(currentElement);
         }
         return it;
     }
@@ -89,21 +90,15 @@ public class TodoItemDaoCollection implements TodoItemDao {
     @Override
     public Collection<TodoItem> findByDeadlineAfter(LocalDate date) {
         Collection<TodoItem> it = new ArrayList<>();
-        for (TodoItem temp : items) {
-            if (temp.getDeadLine().compareTo(date) > 0)
-                it.add(temp);
+        for (TodoItem currentElement : items) {
+            if (currentElement.getDeadLine().compareTo(date) > 0)
+                it.add(currentElement);
         }
         return it;
     }
 
     @Override
     public void removeId(int id) {
-        Iterator<TodoItem> itr = items.iterator();
-        while (itr.hasNext()) {
-            TodoItem t = itr.next();
-            if (id == t.getId()) {
-                break;
-            }
-        }
+        items.removeIf(currentElement -> currentElement.getId() == id);
     }
 }
