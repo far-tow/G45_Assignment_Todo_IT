@@ -44,13 +44,13 @@ public class App {
         Person createdPerson3 = persons.persist(per3);
         System.out.println("****Find All Person **** \n" + persons.findAll());
         System.out.println("****Find by id **** \n" + persons.findById(createdPerson1.getId()));
-        System.out.println("****Find by email **** \n" +persons.findByEmail("erik@lexicon.se"));
+        System.out.println("****Find by email **** \n" + persons.findByEmail("erik@lexicon.se"));
         persons.remove(103);
         System.out.println("****Show if person 103 is removed **** \n" + persons.findAll());
 
         TodoItem item1 = new TodoItem("Cut to size", "Cut the legs to 10 inch", LocalDate.parse("2022-11-01"), false, createdPerson1);
         TodoItem item2 = new TodoItem("Glue up", "Glue Oak tableTops", LocalDate.parse("2022-12-31"), false, createdPerson2);
-        TodoItem item3 = new TodoItem("blabla", "göra nåt", LocalDate.parse("2022-11-24"), false,createdPerson3);
+        TodoItem item3 = new TodoItem("blabla", "göra nåt", LocalDate.parse("2022-11-24"), false, createdPerson3);
         TodoItem createdItem1 = items.persist(item1);
         TodoItem createdItem2 = items.persist(item2);
         TodoItem createdItem3 = items.persist(item3);
@@ -62,8 +62,20 @@ public class App {
         TodoItemTask createdTask2 = tasks.persist(task2);
         System.out.println(items.findById(201));
         //System.out.println(item1);
-        System.out.println(tasks.findAll());
-        System.out.println(items.findAll());
+        System.out.println("****Find All Tasks **** \n" + tasks.findAll());
+        System.out.println("****Find by Assignment Status (true) **** \n" + tasks.findByAssignedStatus(true));
+        System.out.println("****Find by Id **** \n" + tasks.findById(213));
+        System.out.println("****Find by person id **** \n" + tasks.findByPersonId(101));
+        System.out.println("_________________________________");
+
+        System.out.println("****Find All Items **** \n" + items.findAll());
+        System.out.println("****Find by Status (done = false) **** \n" + items.findAllByDoneStatus(false));
+        System.out.println("****Find by Id **** \n" + items.findById(202));
+        System.out.println("****Find by deadline after (date) **** \n" + items.findByDeadlineAfter(LocalDate.now()));
+        System.out.println("****Find by deadline before (date) **** \n" + items.findByDeadlineBefore(LocalDate.now()));
+        System.out.println("****Find by title contains **** \n" + items.findByTitleContains("bla"));
+        items.removeId(201);
+        System.out.println("****Find by All to check if item 201 is removed **** \n" + items.findAll());
 
 
 

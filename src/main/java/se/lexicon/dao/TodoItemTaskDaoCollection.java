@@ -56,10 +56,11 @@ public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
 
     @Override
     public Collection<TodoItemTask> findByPersonId(int id) {
-        Collection<TodoItemTask> it = new ArrayList<>();
+        List<TodoItemTask> it = new ArrayList<>();
         for (TodoItemTask currentElement : tasks) {
             if (currentElement.getAssignee().getId() == id)
                 it.add(currentElement);
+            return it;
         }
         return it;
     }
