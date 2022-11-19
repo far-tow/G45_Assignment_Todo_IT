@@ -92,17 +92,17 @@ public class App {
 
         System.out.println(item1.toString());
         System.out.println(item2.toString());
-        System.out.println(item3.toString());
+        System.out.println(item3.toString());*/
         System.out.println("___________________________________");
 
         //Check when task should be done and if the date has passed or not.
         boolean overDue = item1.isOverDue(item1);
-        System.out.println(item1.getTitle() + " " + overDue);
+        System.out.println((item1.getTitle() + " " + (overDue ? "YES" : "NO")));
         overDue = item2.isOverDue(item2);
-        System.out.println(item2.getTitle() + " " + overDue);
+        System.out.println((item2.getTitle() + " " + (overDue ? "YES" : "NO")));
         System.out.println("___________________________________");
 
-        TodoItemTask task1 = new TodoItemTask(item1, per1);
+       /* TodoItemTask task1 = new TodoItemTask(item1, per1);
         TodoItemTask task2 = new TodoItemTask(item2, per2);
 
         System.out.println(task1.toString());
