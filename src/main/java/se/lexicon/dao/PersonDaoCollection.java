@@ -7,9 +7,11 @@ package se.lexicon.dao;
 
 
 import se.lexicon.Person;
+import se.lexicon.TodoItem;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -56,8 +58,17 @@ public class PersonDaoCollection implements PersonDao {
 
     @Override
     public void remove(int id) {
-        persons.removeIf(currentElement -> currentElement.getId() == id);
+        //  persons.removeIf(currentElement -> currentElement.getId() == id);
+        Iterator<Person> it = persons.iterator();
+        while (it.hasNext()) {
+            Person currentElement = it.next();
+            if (currentElement.getId() == id) {
+                it.remove();
+                break;
+            }
+        }
     }
 }
+
 
 

@@ -66,6 +66,8 @@ public class App {
         System.out.println("****Find by Assignment Status (true) **** \n" + tasks.findByAssignedStatus(true));
         System.out.println("****Find by Id **** \n" + tasks.findById(213));
         System.out.println("****Find by person id **** \n" + tasks.findByPersonId(101));
+        tasks.remove(213);
+        System.out.println("****Find by All to show if task id 213 is removed **** \n" + tasks.findAll());
         System.out.println("_________________________________");
 
         System.out.println("****Find All Items **** \n" + items.findAll());

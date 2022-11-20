@@ -34,7 +34,7 @@ public class TodoItemDaoCollection implements TodoItemDao {
         if (id == 0) throw new IllegalArgumentException("id was null");
         for (TodoItem currentElement : items) {
             if (currentElement.getId() != 0 && currentElement.getId() == id)
-                 return currentElement;
+                return currentElement;
         }
         return null;
     }
@@ -100,6 +100,16 @@ public class TodoItemDaoCollection implements TodoItemDao {
 
     @Override
     public void removeId(int id) {
-        items.removeIf(currentElement -> currentElement.getId() == id);
+        //    items.removeIf(currentElement -> currentElement.getId() == id);
+        Iterator<TodoItem> it = items.iterator();
+        while (it.hasNext()) {
+            TodoItem currentElement = it.next();
+            if (currentElement.getId() == id) {
+                it.remove();
+                break;
+            }
+        }
     }
 }
+
+
