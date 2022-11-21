@@ -3,11 +3,11 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon.dao;
+package se.lexicon.dao.Impl;
 
 
-import se.lexicon.Person;
-import se.lexicon.TodoItem;
+import se.lexicon.model.Person;
+import se.lexicon.dao.PersonDao;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,8 +16,18 @@ import java.util.List;
 
 
 public class PersonDaoCollection implements PersonDao {
-    private List<Person> persons = new ArrayList<>(); //changes !!!!
-    Person person = new Person();
+    private List<Person> persons;
+   Person person = new Person();
+   private static PersonDaoCollection instance;
+
+    private PersonDaoCollection(){
+        persons = new ArrayList<>();
+    }
+
+    public static PersonDaoCollection getInstance(){
+        if (instance == null) instance = new PersonDaoCollection();
+        return instance;
+    }
 
 
     @Override

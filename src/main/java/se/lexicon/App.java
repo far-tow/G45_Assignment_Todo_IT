@@ -1,20 +1,21 @@
 package se.lexicon;
 
 
-import com.sun.org.apache.xml.internal.security.keys.storage.StorageResolver;
 import se.lexicon.dao.*;
+import se.lexicon.dao.Impl.AppUserDaoCollection;
+import se.lexicon.dao.Impl.PersonDaoCollection;
+import se.lexicon.dao.Impl.TodoItemDaoCollection;
+import se.lexicon.dao.Impl.TodoItemTaskDaoCollection;
+import se.lexicon.model.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        AppUserDao appUserStorage = new AppUserDaoCollection();
-        PersonDao persons = new PersonDaoCollection();
-        TodoItemDao items = new TodoItemDaoCollection();
-        TodoItemTaskDao tasks = new TodoItemTaskDaoCollection();
+        AppUserDao appUserStorage = AppUserDaoCollection.getInstance();
+        PersonDao persons = PersonDaoCollection.getInstance();
+        TodoItemDao items = TodoItemDaoCollection.getInstance();
+        TodoItemTaskDao tasks = TodoItemTaskDaoCollection.getInstance();
 
         AppUser userData1 = new AppUser("anders", "2352552", AppRole.ROLE_APP_USER);
         AppUser userData2 = new AppUser("karin", "23533352", AppRole.ROLE_APP_ADMIN);
@@ -31,10 +32,7 @@ public class App {
 
         System.out.println("****Check if anders is removed **** \n" + appUserStorage.findAll());
 
-        /*AppUser persistedAppUser2 = appUsers.persist(userData2);
-        //AppUser presistedAppUser3 = appUsers.persist(userData3);
-        Person personData1 = new Person( "Jörgen","Persson","jorgen.persson@lexicon.se");
-        AppUser karin = new AppUser("kari", "Farhad", AppRole.ROLE_APP_ADMIN);*/
+
         Person per1 = new Person("Karin", "Persson", "karin@lexicon.se", createdAppUser1);
         Person per2 = new Person("Erik", "Svensson", "erik@lexicon.se", createdAppUser2);
         Person per3 = new Person("Göran", "Samuelsson", "goran@lexicon.se", createdAppUser3);

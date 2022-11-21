@@ -3,7 +3,7 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon;
+package se.lexicon.model;
 
 public enum AppRole {
     ROLE_APP_USER {

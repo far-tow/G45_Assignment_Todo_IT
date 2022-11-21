@@ -5,7 +5,7 @@
 
 package se.lexicon.dao;
 
-import se.lexicon.TodoItemTask;
+import se.lexicon.model.TodoItemTask;
 
 import java.util.Collection;
 

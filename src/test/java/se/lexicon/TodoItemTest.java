@@ -7,6 +7,8 @@ package se.lexicon;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.lexicon.model.Person;
+import se.lexicon.model.TodoItem;
 
 import static org.junit.jupiter.api.Assertions.*;
 

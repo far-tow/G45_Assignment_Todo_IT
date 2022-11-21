@@ -3,9 +3,7 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon;
-
-import sun.invoke.empty.Empty;
+package se.lexicon.model;
 
 import java.util.Objects;
 
@@ -55,7 +53,8 @@ public class AppUser {
     }
 
     public void setUserName(String userName) {
-        if (userName == null || userName.isEmpty())throw new IllegalArgumentException("Username is NOT allowed to be NULL or Empty!");
+        if (userName == null || userName.isEmpty())
+            throw new IllegalArgumentException("Username is NOT allowed to be NULL or Empty!");
         this.userName = userName;
     }
 
@@ -64,7 +63,8 @@ public class AppUser {
     }
 
     public void setPassWord(String passWord) {
-        if (passWord == null || passWord.isEmpty()) throw new IllegalArgumentException("Password is NOT allowed to be NULL or Empty!");
+        if (passWord == null || passWord.isEmpty())
+            throw new IllegalArgumentException("Password is NOT allowed to be NULL or Empty!");
         this.passWord = passWord;
     }
 

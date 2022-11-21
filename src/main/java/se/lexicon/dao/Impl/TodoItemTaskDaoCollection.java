@@ -3,10 +3,10 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon.dao;
+package se.lexicon.dao.Impl;
 
-import se.lexicon.TodoItem;
-import se.lexicon.TodoItemTask;
+import se.lexicon.model.TodoItemTask;
+import se.lexicon.dao.TodoItemTaskDao;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,9 +14,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TodoItemTaskDaoCollection implements TodoItemTaskDao {
-    Collection<TodoItemTask> tasks = new ArrayList<>();
+    Collection<TodoItemTask> tasks;
+    private static TodoItemTaskDaoCollection instance;
 
-    public TodoItemTaskDaoCollection() {
+    private TodoItemTaskDaoCollection() {
+        tasks = new ArrayList<>();
+    }
+
+    public static TodoItemTaskDaoCollection getInstance() {
+        if (instance == null) instance = new TodoItemTaskDaoCollection();
+        return instance;
     }
 
     @Override

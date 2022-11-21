@@ -1,7 +1,11 @@
-package se.lexicon;
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Farhad Towfighian 2022.                                       /
+// https://github.com/far-tow                                                  /
+////////////////////////////////////////////////////////////////////////////////
+
+package se.lexicon.model;
 
 import se.lexicon.sequencer.TodoItemIdSequencer;
-import se.lexicon.sequencer.TodoItemTaskIdSequencer;
 
 import java.util.Objects;
 

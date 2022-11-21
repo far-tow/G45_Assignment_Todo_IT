@@ -3,11 +3,11 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon.dao;
+package se.lexicon.dao.Impl;
 
 
-import se.lexicon.AppUser;
-
+import se.lexicon.model.AppUser;
+import se.lexicon.dao.AppUserDao;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,10 +16,16 @@ import java.util.List;
 
 public class AppUserDaoCollection implements AppUserDao {
 
-    //private List<AppUser> appUsers;
     private List<AppUser> appUsers;
-    public AppUserDaoCollection() {
+    private static AppUserDaoCollection instance;
+
+    private AppUserDaoCollection() {
         this.appUsers = new ArrayList<>();
+    }
+
+    public static AppUserDaoCollection getInstance() {
+        if (instance == null) instance = new AppUserDaoCollection();
+        return instance;
     }
 
     @Override
@@ -34,11 +40,10 @@ public class AppUserDaoCollection implements AppUserDao {
     @Override
     public AppUser findByUsername(String userName) {
         if (userName == null) throw new IllegalArgumentException("username was null");
-        for (AppUser temp : appUsers ) {
+        for (AppUser temp : appUsers) {
             if (!(temp.getUserName().equals(null)) && temp.getUserName().equalsIgnoreCase(userName))
 
                 return temp;
-            //appUsers.add(temp);
         }
         return null;
     }
@@ -50,8 +55,8 @@ public class AppUserDaoCollection implements AppUserDao {
 
     @Override
     public boolean remove(String userName) {
-        for (AppUser temp : appUsers ) {
-            if(temp.getUserName().equals(userName)) {
+        for (AppUser temp : appUsers) {
+            if (temp.getUserName().equals(userName)) {
                 appUsers.remove(temp);
                 return true;
             }

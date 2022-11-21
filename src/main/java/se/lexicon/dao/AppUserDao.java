@@ -5,7 +5,7 @@
 
 package se.lexicon.dao;
 
-import se.lexicon.AppUser;
+import se.lexicon.model.AppUser;
 
 import java.util.Collection;
 
@@ -17,6 +17,7 @@ public interface AppUserDao {
     Collection<AppUser> findAll();
 
     boolean remove(String userName);
+
 
 
 }

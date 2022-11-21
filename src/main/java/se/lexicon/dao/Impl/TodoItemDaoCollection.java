@@ -3,10 +3,10 @@
 // https://github.com/far-tow                                                  /
 ////////////////////////////////////////////////////////////////////////////////
 
-package se.lexicon.dao;
+package se.lexicon.dao.Impl;
 
-import se.lexicon.Person;
-import se.lexicon.TodoItem;
+import se.lexicon.model.TodoItem;
+import se.lexicon.dao.TodoItemDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,8 +16,19 @@ import java.util.List;
 
 public class TodoItemDaoCollection implements TodoItemDao {
 
-    private List<TodoItem> items = new ArrayList<>();
-    TodoItem item = new TodoItem();
+
+    private List<TodoItem> items;
+    private static TodoItemDaoCollection instance;
+
+
+    private TodoItemDaoCollection() {
+        items = new ArrayList<>();
+    }
+
+    public static TodoItemDaoCollection getInstance() {
+        if (instance == null) instance = new TodoItemDaoCollection();
+        return instance;
+    }
 
 
     @Override

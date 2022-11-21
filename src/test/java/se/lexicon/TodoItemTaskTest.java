@@ -8,6 +8,9 @@ package se.lexicon;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.lexicon.model.Person;
+import se.lexicon.model.TodoItem;
+import se.lexicon.model.TodoItemTask;
 
 import java.time.LocalDate;
 
